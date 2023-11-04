@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  deleteDataToSessionStorage,
+  getDataToSessionStorage,
+  saveDataToSessionStorage,
+} from "../../utils/sessionStorageHandler";
 
-const initialState = sessionStorage.getItem("user")
-  ? JSON.parse(sessionStorage.getItem("user"))
+const storageData = getDataToSessionStorage("user");
+
+const initialState = storageData
+  ? storageData
   : { email: "", token: "", id: "" };
 
 export const userSlice = createSlice({
@@ -12,13 +19,13 @@ export const userSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
-      sessionStorage.setItem("user", JSON.stringify(state));
+      saveDataToSessionStorage("user", state);
     },
     removeUser: (state) => {
       state.email = "";
       state.token = "";
       state.id = "";
-      sessionStorage.setItem("user", JSON.stringify(state));
+      deleteDataToSessionStorage("user");
     },
   },
 });

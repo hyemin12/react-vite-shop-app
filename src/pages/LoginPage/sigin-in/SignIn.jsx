@@ -6,6 +6,7 @@ import Form from "../../../components/form/Form";
 import { firebaseErrorHandler } from "../../../utils/firebaseErrorHandler";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../store/user/user.slice";
+import { setUserId } from "../../../store/cart/cart.slice";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const SignIn = () => {
   const logInHandler = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user.email);
         dispatch(
           setUser({
             email: userCredential.user.email,
@@ -24,6 +24,7 @@ const SignIn = () => {
             id: userCredential.user.uid,
           })
         );
+        dispatch(setUserId(userCredential.user.uid));
         navigate("/");
       })
       .catch((error) => {
