@@ -4,19 +4,29 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import Form from "../../../components/form/Form";
 import app from "../../../firebase";
 import { firebaseErrorHandler } from "../../../utils/firebaseErrorHandler";
+import { useAppDispatch } from "../../../hooks/redux";
+import { setUserId } from "../../../store/cart/cart.slice";
+import { setUser } from "../../../store/user/user.slice";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [firebaseError, setFirebaseError] = useState(null);
+  const dispatch = useAppDispatch();
 
   const auth = getAuth(app);
 
   const signUpAndLoginHandler = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        // 리덕스 스토어에 담는 로직
-        console.log(user);
-        navigate("/login");
+      .then((userCredential) => {
+        dispatch(
+          setUser({
+            email: userCredential.user.email,
+            token: userCredential.user.refreshToken,
+            id: userCredential.user.uid,
+          })
+        );
+        dispatch(setUserId(userCredential.user.uid));
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

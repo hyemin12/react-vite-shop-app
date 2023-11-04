@@ -4,14 +4,14 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../../../firebase";
 import Form from "../../../components/form/Form";
 import { firebaseErrorHandler } from "../../../utils/firebaseErrorHandler";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../hooks/redux";
 import { setUser } from "../../../store/user/user.slice";
 import { setUserId } from "../../../store/cart/cart.slice";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [firebaseError, setFirebaseError] = useState(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const auth = getAuth(app);
   const logInHandler = (email, password) => {
