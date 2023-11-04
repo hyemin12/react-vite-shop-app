@@ -17,11 +17,10 @@ const CardItem = ({ item }) => {
         <img src={image} width={"80%"} height={"200px"} alt="product card" />
       </Link>
       <h5>{title.substring(0, 15)}...</h5>
-      <div>
-        <AddToCartButton includedCart={includedCart} item={item} />
 
-        <p>${price}</p>
-      </div>
+      <p>${price}</p>
+
+      <AddToCartButton includedCart={includedCart} item={item} />
     </li>
   );
 };

@@ -8,12 +8,13 @@
     margin-left: 20px;
     font-size: 20px;
 
-    a {
-      & :hover {
-        color: var(--hover-color);
-        cursor: pointer;
-        transition: 0.3s all ease;
-      }
+    & :hover {
+      display: block;
+      background-color: var(--secondary-color);
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s all ease;
     }
   }
 

@@ -13,7 +13,7 @@ const AddToCartButton = ({ includedCart, item }) => {
       disabled={includedCart}
       onClick={() => !includedCart && addItemCartHandler}
     >
-      {!includedCart ? "장바구니에 담긴 제품" : "장바구니에 담기"}
+      {includedCart ? "장바구니에 담긴 제품" : "장바구니에 담기"}
     </button>
   );
 };

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "jeonjuSans";
+  src: url("./assets//fonts/JeonjuCraft_Go_Regular.ttf");
+}
+@font-face {
+  font-family: "ddang";
+  src: url("./assets//fonts/ddag.ttf");
+}
+
 :root {
   --main-color: #717482;
   --second-color: #767a89;
@@ -5,7 +14,7 @@
   --primary-color: #007bff;
   --warning-color: #ffc107;
   --success-color: #28a745;
-  --dark-color: 343a40;
+  --dark-color: #343a40;
   --ligth-color: #f8f9fa;
 }
 
@@ -17,6 +26,8 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: "jeonjuSans", sans-serif;
+  color: var(--dark-color);
 }
 
 a {

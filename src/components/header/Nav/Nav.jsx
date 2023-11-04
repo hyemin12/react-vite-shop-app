@@ -12,7 +12,6 @@ function Nav() {
         <li>
           <div className={styles.counter}>
             <Link to={"/cart"}>
-              {" "}
               <FiShoppingCart title="장바구니" />
             </Link>
           </div>
@@ -20,7 +19,6 @@ function Nav() {
         <li>
           <div className={styles.counter}>
             <Link to={"/order"}>
-              {" "}
               <FiUser title="주문" />
             </Link>
           </div>
