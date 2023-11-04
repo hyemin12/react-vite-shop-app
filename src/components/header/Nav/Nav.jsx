@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { FiLogIn, FiShoppingCart, FiUser } from "react-icons/fi";
-import { GoSignOut } from "react-icons/go";
+import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { GoSignIn, GoSignOut } from "react-icons/go";
 import styles from "./Nav.module.scss";
+import useAuth from "../../../hooks/useAuth";
 
 function Nav() {
+  const isAuth = useAuth();
   return (
     <nav className={styles.nav}>
       <ul className={styles.nav}>
@@ -24,10 +26,13 @@ function Nav() {
           </div>
         </li>
         <li>
-          <GoSignOut className={styles.nav_sign_out} title="로그아웃" />
-          <Link to="/login">
-            <FiLogIn title="로그인" />
-          </Link>
+          {isAuth ? (
+            <GoSignOut className={styles.nav_sign_out} title="로그아웃" />
+          ) : (
+            <Link to="/login">
+              <GoSignIn title="로그인" />
+            </Link>
+          )}
         </li>
       </ul>
     </nav>

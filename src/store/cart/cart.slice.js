@@ -62,7 +62,10 @@ export const cartSlice = createSlice({
       saveDataToSessionStorage("cart", state.products);
     },
     getTotalPrice: (state) => {
-      state.totalPrice = state.products.reduce((acc, cur) => (acc += cur), 0);
+      state.totalPrice = state.products.reduce(
+        (acc, cur) => (acc += cur.total),
+        0
+      );
     },
   },
 });
