@@ -4,15 +4,26 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../../../firebase";
 import Form from "../../../components/form/Form";
 import { firebaseErrorHandler } from "../../../utils/firebaseErrorHandler";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../store/user/user.slice";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [firebaseError, setFirebaseError] = useState(null);
+  const dispatch = useDispatch();
+
   const auth = getAuth(app);
   const logInHandler = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        console.log(user);
+      .then((userCredential) => {
+        console.log(userCredential.user.email);
+        dispatch(
+          setUser({
+            email: userCredential.user.email,
+            token: userCredential.user.refreshToken,
+            id: userCredential.user.uid,
+          })
+        );
         navigate("/");
       })
       .catch((error) => {
