@@ -1,8 +1,7 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Form.module.scss";
 
-const Form = ({ title }) => {
+const Form = ({ title, firebaseError, getDataForm }) => {
   const {
     register,
     handleSubmit,
@@ -11,9 +10,11 @@ const Form = ({ title }) => {
   } = useForm({ mode: "onChange" });
 
   const onSubmit = ({ email, password }) => {
-    console.log({ email, password });
+    getDataForm(email, password);
+    // form 내용 삭제
+    reset();
   };
-  console.log(errors);
+
   //   유효성
   const userEmail = {
     required: "이메일은 필수 입력입니다",
@@ -28,11 +29,6 @@ const Form = ({ title }) => {
     minLength: {
       value: 6,
       message: "최소 6자입니다.",
-    },
-    pattern: {
-      value: /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/,
-      message:
-        "소문자, 숫자, 특수문자를 각 하나 포함한 8자리 이상이여야 합니다.",
     },
   };
   return (
@@ -60,7 +56,9 @@ const Form = ({ title }) => {
       </div>
 
       <button type="submit">{title}</button>
-      <span className={styles.form_error}></span>
+      {firebaseError && (
+        <span className={styles.form_error}>{firebaseError}</span>
+      )}
     </form>
   );
 };
