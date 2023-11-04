@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchProduct } from "../../store/products/product.slice";
-import styles from "./DetailPage.module.scss";
 import Loader from "../../components/loader/Loader";
-import { addToCart } from "../../store/cart/cart.slice";
+import AddToCartButton from "../../components/button/AddToCartButton";
+import MoveToCartButton from "../../components/button/MoveToCartButton";
+import styles from "./DetailPage.module.scss";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -18,11 +19,7 @@ const DetailPage = () => {
     dispatch(fetchProduct(productId));
   }, [id]);
 
-  const productMatching = products.some((product) => product.id === id);
-
-  const addItemCartHandler = () => {
-    dispatch(addToCart(product));
-  };
+  const includedCart = products.some((product) => product.id === id);
 
   return (
     <div className="page">
@@ -40,13 +37,8 @@ const DetailPage = () => {
             <h4>$ {product.price}</h4>
             <p>{product.description}</p>
             <div>
-              <button
-                disabled={productMatching}
-                onClick={() => !productMatching && addItemCartHandler}
-              >
-                {!productMatching ? "장바구니에 담긴 제품" : "장바구니에 담기"}
-              </button>
-              <Link to="/cart">장바구니로 이동</Link>
+              <AddToCartButton includedCart={includedCart} item={product} />
+              <MoveToCartButton />
             </div>
           </div>
         </div>

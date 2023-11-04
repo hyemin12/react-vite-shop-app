@@ -1,21 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppSelector } from "../../../hooks/redux";
+import AddToCartButton from "../../../components/button/AddToCartButton";
 import styles from "./CardItem.module.scss";
-import { addToCart } from "../../../store/cart/cart.slice";
 
 const CardItem = ({ item }) => {
   const { products } = useAppSelector((state) => state.cartSlice);
-  const dispatch = useAppDispatch();
+
   const { id, image, title, price } = item;
 
-  const productMatching = products.some((product) => product.id === id);
-  console.log(products, productMatching, id);
-
-  const addItemCartHandler = () => {
-    console.log(item);
-    dispatch(addToCart(item));
-  };
+  const includedCart = products.some((product) => product.id === id);
 
   return (
     <li className={styles.card_item}>
@@ -24,12 +18,8 @@ const CardItem = ({ item }) => {
       </Link>
       <h5>{title.substring(0, 15)}...</h5>
       <div>
-        <button
-          disabled={productMatching}
-          onClick={!productMatching && addItemCartHandler}
-        >
-          {productMatching ? "장바구니에 담긴 제품" : "장바구니에 담기"}
-        </button>
+        <AddToCartButton includedCart={includedCart} item={item} />
+
         <p>${price}</p>
       </div>
     </li>
