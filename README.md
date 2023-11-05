@@ -1,8 +1,20 @@
-# React + Vite
+# 타입스크립트기반의 쇼핑몰 사이트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[사이트](https://react-shop-app-4692d.firebaseapp.com/)로 이동하기
 
-Currently, two official plugins are available:
+■ 패키지 모듈 설치  
+`$npm i`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+■ 개발 서버 열기  
+`$npm run dev`
+
+## package
+
+- React
+- Vite
+- Typescript
+- redux
+- redux-toolkit
+- sass
+- react-hook-form
+- firebase (auth/hosting)
