@@ -1,21 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Order } from "./order.type";
 
 export const fetchOrder = createAsyncThunk(
   "order/fetchOrder",
-  async (userId, thunkAPI) => {
+  async (userId: string, thunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await axios.get<Order[]>(
         `https://654707d9902874dff3abe845.mockapi.io/orders?search=${userId}`
       );
       return data;
     } catch (error) {
-      thunkAPI.rejectWithValue("Error receiving order");
+      return thunkAPI.rejectWithValue("Error receiving order");
     }
   }
 );
 
-const initialState = {
+type OrderType = {
+  order: Order[];
+  isLoading: boolean;
+  error: string | null;
+};
+
+const initialState: OrderType = {
   order: [],
   isLoading: false,
   error: null,
@@ -24,6 +31,7 @@ const initialState = {
 const orderSlice = createSlice({
   name: "order",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOrder.pending, (state) => {
       state.isLoading = true;
@@ -34,7 +42,7 @@ const orderSlice = createSlice({
     });
     builder.addCase(fetchOrder.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = action.payload as string;
     });
   },
 });

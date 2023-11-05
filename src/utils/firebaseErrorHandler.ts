@@ -1,6 +1,6 @@
 import React from "react";
 
-export const firebaseErrorHandler = (error) => {
+export const firebaseErrorHandler = (error: any) => {
   console.log(error);
   switch (error.code) {
     case "auth/user-not-found" || "auth/wrong-password":

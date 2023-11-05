@@ -1,10 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   deleteDataToSessionStorage,
   getDataToSessionStorage,
   saveDataToSessionStorage,
 } from "../../utils/sessionStorageHandler";
 import axios from "axios";
+import { Product } from "../products/products.type";
 
 export const postOrder = createAsyncThunk(
   "cart/postOder",
@@ -24,7 +25,13 @@ export const postOrder = createAsyncThunk(
 const storageCartData = getDataToSessionStorage("cart");
 const storageUserData = getDataToSessionStorage("userId");
 
-const initialState = {
+type CartState = {
+  products: Product[];
+  totalPrice: number;
+  userId: string;
+};
+
+const initialState: CartState = {
   products: storageCartData ? storageCartData : [],
   totalPrice: 0,
   userId: storageUserData ? storageUserData : "",
@@ -33,7 +40,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setUserId: (state, action) => {
+    setUserId: (state, action: PayloadAction<string>) => {
       state.userId = action.payload;
       saveDataToSessionStorage("userId", state.userId);
     },
@@ -41,7 +48,7 @@ export const cartSlice = createSlice({
       state.userId = "";
       deleteDataToSessionStorage("userId");
     },
-    addToCart: (state, action) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       state.products.push({
         ...action.payload,
         quantity: 1,
@@ -49,13 +56,13 @@ export const cartSlice = createSlice({
       });
       saveDataToSessionStorage("cart", state.products);
     },
-    deleteFromCart: (state, action) => {
+    deleteFromCart: (state, action: PayloadAction<number>) => {
       state.products = state.products.filter(
         (item) => item.id !== action.payload
       );
       saveDataToSessionStorage("cart", state.products);
     },
-    incrementProduct: (state, action) => {
+    incrementProduct: (state, action: PayloadAction<number>) => {
       state.products = state.products.map((item) =>
         item.id === action.payload
           ? {
@@ -67,7 +74,7 @@ export const cartSlice = createSlice({
       );
       saveDataToSessionStorage("cart", state.products);
     },
-    decrementProduct: (state, action) => {
+    decrementProduct: (state, action: PayloadAction<number>) => {
       state.products = state.products.map((item) =>
         item.id === action.payload
           ? {

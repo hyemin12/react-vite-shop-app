@@ -1,26 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Product } from "./products.type";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (category, thunkAPI) => {
+  async (category: string, thunkAPI) => {
     let response;
     try {
       if (category === "all") {
-        response = await axios.get("https://fakestoreapi.com/products");
+        response = await axios.get<Product[]>(
+          "https://fakestoreapi.com/products"
+        );
       } else {
-        response = await axios.get(
+        response = await axios.get<Product[]>(
           `https://fakestoreapi.com/products/category/${category}`
         );
       }
       return response.data;
     } catch (error) {
-      thunkAPI.rejectetWithValue("Error loading products");
+      return thunkAPI.rejectWithValue("Error loading products");
     }
   }
 );
 
-const initialState = {
+type ProductsType = {
+  products: Product[];
+  isLoading: boolean;
+  error: string | null;
+};
+
+const initialState: ProductsType = {
   products: [],
   isLoading: false,
   error: null,
@@ -29,6 +38,7 @@ const initialState = {
 export const productsSlice = createSlice({
   name: "products",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading = true;
@@ -39,7 +49,7 @@ export const productsSlice = createSlice({
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = action.payload as string;
     });
   },
 });
