@@ -2,13 +2,19 @@
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  background-color: #f1eadc;
+  background-color: var(--dark-color);
+
+  p,
+  a {
+    color: var(--light-color);
+  }
 }
 
 .contacts {
   display: flex;
   align-items: center;
   font-size: 25px;
+  text-transform: lowercase;
 
   a {
     display: inline-block;

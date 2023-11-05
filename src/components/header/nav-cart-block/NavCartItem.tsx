@@ -6,6 +6,7 @@ import { deleteFromCart } from "@store/cart/cart.slice";
 import { Product } from "@store/products/products.type";
 import { price2decimal } from "@utils/price2decimal";
 import styles from "./NavCartItem.module.scss";
+import { IconContext } from "react-icons/lib";
 
 const NavCartItem: React.FC<Product> = (item) => {
   const { id, category, image, title, quantity, total } = item;
@@ -29,9 +30,13 @@ const NavCartItem: React.FC<Product> = (item) => {
       </div>
       <h4 className={styles.nav_cart_price}>${price2decimal(total)}</h4>
       <div>
-        <button onClick={deleteItemCart} className={styles.nav_cart_delete}>
+        <span
+          role="button"
+          onClick={deleteItemCart}
+          className={styles.nav_cart_delete}
+        >
           <AiOutlineDelete />
-        </button>
+        </span>
       </div>
     </div>
   );

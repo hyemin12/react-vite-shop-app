@@ -63,20 +63,16 @@
 
 .nav_cart_delete {
   font-size: 16px;
-  background: none;
+  border-radius: 50%;
+  background: transparent;
   border: none;
   cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
-  svg {
-    transition: 0.3s ease-out;
-  }
+  transition: 0.3s ease-out;
 
   &:hover {
-    svg {
-      fill: var(--danger-color);
-    }
   }
 }
 

@@ -2,19 +2,11 @@ import { BsGithub } from "react-icons/bs";
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
       <div className="container">
-        <div className={styles.contacts}>
-          <a
-            href="https://github.com/hyemin12/react-vite-shop-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {" "}
-            <BsGithub />
-          </a>
-        </div>
+        <p> ⓒ {year} HYEMIN</p>
       </div>
     </footer>
   );
