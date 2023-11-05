@@ -35,13 +35,18 @@ const CartItem = ({ id, image, title, price, category, quantity, total }) => {
       </div>
       <div className={styles.cart_count}>
         <div>
-          <button disabled={quantity === 1} onClick={decrementItemCountHandler}>
+          <button
+            disabled={quantity === 1}
+            onClick={decrementItemCountHandler}
+            className={styles.cart_button}
+          >
             -
           </button>
           <span>{quantity}</span>
           <button
             disabled={quantity === 10}
             onClick={incrementItemCountHandler}
+            className={styles.cart_button}
           >
             +
           </button>
@@ -49,9 +54,9 @@ const CartItem = ({ id, image, title, price, category, quantity, total }) => {
       </div>
       <button
         onClick={deleteItemFromCartHandler}
-        className={styles.cart_delete}
+        className={styles.cart_button_delete}
       >
-        <AiOutlineDelete />
+        삭제하기
       </button>
     </div>
   );

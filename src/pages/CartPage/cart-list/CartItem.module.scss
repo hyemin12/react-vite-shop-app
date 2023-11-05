@@ -75,26 +75,6 @@
     align-items: center;
     justify-content: space-between;
 
-    button {
-      padding: 5px 10px;
-      color: #333;
-      font-weight: 400;
-      font-size: 10px;
-      background: none;
-      border: 2px solid rgb(39 39 39 / 10%);
-      cursor: pointer;
-      transition: 0.3s ease-out;
-
-      &:disabled {
-        color: rgb(39 39 39 / 10%);
-        cursor: default;
-      }
-
-      &:hover {
-        border: 2px solid #333;
-      }
-    }
-
     span {
       display: block;
       margin-right: 10px;
@@ -111,27 +91,34 @@
         padding: 10px 15px;
         font-size: 16px;
       }
-
-      button {
-        padding: 10px 15px;
-        font-size: 16px;
-      }
     }
   }
 }
-
-.cart_delete {
-  display: flex;
-  align-items: flex-start;
-  height: 20%;
-  color: var(--danger-color);
-  font-size: 25px;
+.cart_button {
+  padding: 5px 10px;
+  color: #333;
+  font-weight: 400;
+  font-size: 10px;
   background: none;
-  border: none;
+  border: 2px solid rgb(39 39 39 / 10%);
   cursor: pointer;
   transition: 0.3s ease-out;
-
-  &:hover {
-    color: #333;
+  &:disabled {
+    color: rgb(39 39 39 / 10%);
+    cursor: default;
   }
+  &:hover {
+    border: 2px solid #333;
+  }
+  @media (min-width: 610px) {
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+  }
+}
+.cart_button_delete {
+  @extend .cart_button;
+  font-size: 1rem;
+  padding: 10px 15px;
 }
