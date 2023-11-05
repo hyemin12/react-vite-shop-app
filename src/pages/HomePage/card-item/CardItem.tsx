@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/redux";
 import AddToCartButton from "../../../components/button/AddToCartButton";
+import { Product } from "../../../store/products/products.type";
 import styles from "./CardItem.module.scss";
 
-const CardItem = ({ item }) => {
+const CardItem: React.FC<Product> = (product) => {
   const { products } = useAppSelector((state) => state.cartSlice);
 
-  const { id, image, title, price } = item;
+  const { id, image, title, price } = product;
 
   const includedCart = products.some((product) => product.id === id);
 
@@ -20,7 +21,7 @@ const CardItem = ({ item }) => {
 
       <p>${price}</p>
 
-      <AddToCartButton includedCart={includedCart} item={item} />
+      <AddToCartButton includedCart={includedCart} item={product} />
     </li>
   );
 };

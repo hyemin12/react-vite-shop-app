@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineDelete } from "react-icons/ai";
 import { useAppDispatch } from "../../../hooks/redux";
 import { deleteFromCart } from "../../../store/cart/cart.slice";
-import { AiOutlineDelete } from "react-icons/ai";
-import styles from "./NavCartItem.module.scss";
 import { price2decimal } from "../../../utils/price2decimal";
+import { Product } from "../../../store/products/products.type";
+import styles from "./NavCartItem.module.scss";
 
-const NavCartItem = (item) => {
-  const { id, category, image, title, price, quantity, total } = item;
+const NavCartItem: React.FC<Product> = (item) => {
+  const { id, category, image, title, quantity, total } = item;
 
   const dispatch = useAppDispatch();
 

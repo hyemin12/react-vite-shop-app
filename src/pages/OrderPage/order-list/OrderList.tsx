@@ -16,7 +16,7 @@ const OrderList = () => {
 
           <ul className={styles.orders_list}>
             {item.products.map((order) => (
-              <OrderItem key={order.id} order={order} />
+              <OrderItem key={order.id} {...order} />
             ))}
           </ul>
         </div>

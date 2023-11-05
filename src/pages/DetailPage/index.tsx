@@ -10,8 +10,8 @@ import styles from "./DetailPage.module.scss";
 const DetailPage = () => {
   const { id } = useParams();
   const productId = Number(id);
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   const { isLoading, product } = useAppSelector((state) => state.productSlice);
   const { products } = useAppSelector((state) => state.cartSlice);
 
@@ -19,7 +19,7 @@ const DetailPage = () => {
     dispatch(fetchProduct(productId));
   }, [id]);
 
-  const includedCart = products.some((product) => product.id === id);
+  const includedCart = products.some((product) => product.id === productId);
 
   return (
     <div className="page">

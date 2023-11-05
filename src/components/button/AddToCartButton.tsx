@@ -1,8 +1,17 @@
 import React from "react";
 import { useAppDispatch } from "../../hooks/redux";
 import { addToCart } from "../../store/cart/cart.slice";
+import { Product } from "../../store/products/products.type";
 
-const AddToCartButton = ({ includedCart, item }) => {
+type AddToCartButtonProps = {
+  includedCart: boolean;
+  item: Product;
+};
+
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({
+  includedCart,
+  item,
+}) => {
   const dispatch = useAppDispatch();
 
   const addItemCartHandler = () => {

@@ -19,7 +19,7 @@ const CartList = () => {
       </thead>
       <tbody>
         {products.map((product, idx) => (
-          <CartItem {...product} key={product.id} index={idx + 1} />
+          <CartItem item={product} key={product.id} index={idx + 1} />
         ))}
       </tbody>
       <tfoot className={styles.cart_tfoot}>

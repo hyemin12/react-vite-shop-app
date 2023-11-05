@@ -6,19 +6,17 @@ import {
   deleteFromCart,
   incrementProduct,
 } from "../../../store/cart/cart.slice";
-import styles from "./CartItem.module.scss";
 import { price2decimal } from "../../../utils/price2decimal";
+import { Product } from "../../../store/products/products.type";
+import styles from "./CartItem.module.scss";
 
-const CartItem = ({
-  id,
-  image,
-  title,
-  price,
-  category,
-  quantity,
-  total,
-  index,
-}) => {
+type CartItemProps = {
+  item: Product;
+  index: number;
+};
+
+const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
+  const { id, image, title, price, category, quantity, total } = item;
   const dispatch = useAppDispatch();
   const deleteItemFromCartHandler = () => {
     dispatch(deleteFromCart(id));

@@ -22,7 +22,7 @@ const CardList = () => {
   return (
     <div className={styles.card_list}>
       {products &&
-        products.map((product) => <CardItem key={product.id} item={product} />)}
+        products.map((product) => <CardItem key={product.id} {...product} />)}
     </div>
   );
 };
