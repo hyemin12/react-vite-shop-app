@@ -23,6 +23,7 @@ const CategortTab: React.FC<CategoryTabProps> = ({ text, categoryName }) => {
           : styles.category_button
       }
       onClick={changeActiveCategory}
+      disabled={categoryName === category}
     >
       {text}
     </button>

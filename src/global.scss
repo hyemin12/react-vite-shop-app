@@ -10,10 +10,7 @@
 :root {
   --main-color: #717482;
   --second-color: #767a89;
-  --danger-color: #dc3545;
-  --primary-color: #007bff;
-  --warning-color: #ffc107;
-  --success-color: #28a745;
+  --primary-color: #ef7a6c;
   --dark-color: #343a40;
   --medium-color: #c0c0c0;
   --ligth-color: #f8f9fa;
@@ -82,12 +79,13 @@ li {
   box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
 
   a {
-    color: var(--main-color);
+    font-weight: bold;
+    color: var(--second-color);
+    transition: 0.3s all ease;
 
     &:hover {
-      color: var(--second-color);
+      color: var(--primary-color);
       cursor: pointer;
-      transition: 0.3s all ease;
     }
   }
 
@@ -104,7 +102,8 @@ li {
   }
 }
 
-button {
+button,
+.button {
   border-radius: 4px;
   padding: 10px 20px;
   color: var(--main-color);
@@ -115,11 +114,22 @@ button {
 
   &:hover {
     color: #fff;
-    background: var(--second-color);
+    background-color: var(--primary-color);
+    border-color: transparent;
   }
 
   &:disabled {
     color: #fff;
     background: var(--second-color);
+  }
+}
+
+button.primary-btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  &:hover {
+    background: var(--second-color);
+    border-color: var(--second-color);
   }
 }

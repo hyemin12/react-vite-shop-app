@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "@hooks/redux";
 import {
   decrementProduct,
   deleteFromCart,
   incrementProduct,
 } from "@store/cart/cart.slice";
 import { Product } from "@store/products/products.type";
-import { useAppDispatch } from "@hooks/redux";
 import { price2decimal } from "@utils/price2decimal";
 import styles from "./CartItem.module.scss";
 

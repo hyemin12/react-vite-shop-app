@@ -3,7 +3,7 @@
   margin-bottom: 50px;
 
   img {
-    width: 320px;
+    width: 200px;
     margin-bottom: 20px;
   }
 
@@ -18,9 +18,8 @@
     margin-bottom: 20px;
   }
 
-  a {
-    color: var(--hover-color);
-    text-decoration: underline;
-    cursor: pointer;
+  button {
+    padding: 20px 30px;
+    font-size: large;
   }
 }

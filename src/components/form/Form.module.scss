@@ -40,7 +40,8 @@
     transition: 0.3s all ease;
 
     &:hover {
-      background: var(--second-color);
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
     }
   }
 }
@@ -50,6 +51,6 @@
   display: block;
   width: 80%;
   padding: 5px;
-  color: var(--danger-color);
+  color: var(--primary-color);
   font-size: 13px;
 }

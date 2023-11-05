@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "@hooks/redux";
 import { AiOutlineDelete } from "react-icons/ai";
 import { deleteFromCart } from "@store/cart/cart.slice";
 import { Product } from "@store/products/products.type";
-import { useAppDispatch } from "@hooks/redux";
 import { price2decimal } from "@utils/price2decimal";
 import styles from "./NavCartItem.module.scss";
 
