@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import styles from "./Nav.module.scss";
 import { removeUser } from "../../../store/user/user.slice";
 import { removeUserId } from "../../../store/cart/cart.slice";
+import NavCartBlock from "../nav-cart-block/NavCartBlock";
 
 function Nav() {
   const dispatch = useAppDispatch();
@@ -31,7 +32,11 @@ function Nav() {
             <Link to={"/cart"}>
               <FiShoppingCart title="장바구니" />
             </Link>
-            {products.length > 0 && <b>{products.length}</b>}
+            {products.length > 0 && (
+              <div className={styles.nav_hover_cart}>
+                <NavCartBlock />
+              </div>
+            )}
           </div>
         </li>
         <li>

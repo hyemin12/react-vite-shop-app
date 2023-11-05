@@ -50,7 +50,9 @@ export const cartSlice = createSlice({
       saveDataToSessionStorage("cart", state.products);
     },
     deleteFromCart: (state, action) => {
-      state.products.filter((item) => item.id !== action.payload);
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload
+      );
       saveDataToSessionStorage("cart", state.products);
     },
     incrementProduct: (state, action) => {
