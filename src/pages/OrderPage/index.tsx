@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import useAuth from "@hooks/useAuth";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { fetchOrder } from "@store/order/order.slice";
@@ -9,15 +9,21 @@ import OrderList from "./order-list/OrderList";
 
 const OrderPage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { isLoading, order } = useAppSelector((state) => state.orderSlice);
   const { isAuth, id } = useAuth();
 
   useEffect(() => {
     dispatch(fetchOrder(id));
   }, [id]);
-  console.log(order);
 
-  if (!isAuth) return <Navigate to="/" />;
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+  }, [isAuth]);
+
+  if (!isAuth) return null;
   if (isLoading) return <Loader />;
   return (
     <div className="page">
