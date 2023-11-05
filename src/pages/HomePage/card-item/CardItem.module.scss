@@ -39,26 +39,6 @@
     margin-bottom: 8px;
   }
 
-  button {
-    border-radius: 4px;
-    padding: 10px 20px;
-    color: var(--main-color);
-    background: #fff;
-    border: 1px solid var(--main-color);
-    cursor: pointer;
-    transition: 0.3s all ease;
-
-    &:hover {
-      color: #ffff;
-      background: var(--second-color);
-    }
-
-    &:disabled {
-      color: #ffff;
-      background: var(--second-color);
-    }
-  }
-
   @media (min-width: 480px) {
     width: 50%;
   }

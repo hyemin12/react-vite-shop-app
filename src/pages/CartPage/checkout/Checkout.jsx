@@ -21,22 +21,15 @@ const Checkout = () => {
 
   return (
     <div className={styles.checkout}>
-      <div>
-        <p>
-          {" "}
-          <span>합계:</span> $ {cart.totalPrice.toFixed(2)}
-        </p>
-
-        {isAuth ? (
-          <button onClick={sendOrderHandler} className={styles.checkout_button}>
-            주문하기
-          </button>
-        ) : (
-          <Link className={styles.checkout_button} to="/login">
-            로그인
-          </Link>
-        )}
-      </div>
+      {isAuth ? (
+        <button onClick={sendOrderHandler} className={styles.checkout_button}>
+          주문하기
+        </button>
+      ) : (
+        <Link className={styles.checkout_button} to="/login">
+          로그인하고 주문하기
+        </Link>
+      )}
     </div>
   );
 };

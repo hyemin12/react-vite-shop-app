@@ -15,6 +15,7 @@
   --warning-color: #ffc107;
   --success-color: #28a745;
   --dark-color: #343a40;
+  --medium-color: #c0c0c0;
   --ligth-color: #f8f9fa;
 }
 
@@ -46,11 +47,11 @@ li {
 // 각 페이지 컴포넌트를 위한 wrapper
 .page {
   flex: 1 1 auto;
-  margin-top: 56px;
+  margin-top: 65px;
   text-align: center;
 
   @media (min-width: 768px) {
-    margin-top: 60px;
+    margin-top: 70px;
   }
 }
 
@@ -100,5 +101,25 @@ li {
 
   @media (min-width: 992px) {
     width: 30%;
+  }
+}
+
+button {
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: var(--main-color);
+  background: #fff;
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  transition: 0.3s all ease;
+
+  &:hover {
+    color: #fff;
+    background: var(--second-color);
+  }
+
+  &:disabled {
+    color: #fff;
+    background: var(--second-color);
   }
 }

@@ -4,13 +4,34 @@ import styles from "./CartList.module.scss";
 import CartItem from "./CartItem";
 
 const CartList = () => {
-  const { products } = useAppSelector((state) => state.cartSlice);
+  const { products, totalPrice } = useAppSelector((state) => state.cartSlice);
   return (
-    <div className={styles.cart_list}>
-      {products.map((product) => (
-        <CartItem {...product} key={product.id} />
-      ))}
-    </div>
+    <table className={styles.cart_list}>
+      <thead>
+        <tr className={styles.cart_thead_tr}>
+          <th>번호</th>
+          <th>상품명</th>
+          <th>판매가</th>
+          <th>수량</th>
+          <th>주문 금액</th>
+          <th>주문관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product, idx) => (
+          <CartItem {...product} key={product.id} index={idx + 1} />
+        ))}
+      </tbody>
+      <tfoot className={styles.cart_tfoot}>
+        <tr>
+          <td colSpan={6}>
+            <h2>
+              <span> 최종 결제 금액 = </span> ${totalPrice}
+            </h2>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   );
 };
 
