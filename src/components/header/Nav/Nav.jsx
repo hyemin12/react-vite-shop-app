@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { GoSignIn, GoSignOut } from "react-icons/go";
-import styles from "./Nav.module.scss";
+import { getAuth, signOut } from "firebase/auth";
+import app from "../../../firebase";
 import useAuth from "../../../hooks/useAuth";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import styles from "./Nav.module.scss";
+import { removeUser } from "../../../store/user/user.slice";
+import { removeUserId } from "../../../store/cart/cart.slice";
 
 function Nav() {
-  const isAuth = useAuth();
+  const dispatch = useAppDispatch();
+  const { isAuth } = useAuth();
+  const { products } = useAppSelector((state) => state.cartSlice);
+
+  const auth = getAuth(app);
+  const logoutHandler = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
+        dispatch(removeUserId());
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <nav className={styles.nav}>
       <ul className={styles.nav}>
@@ -14,6 +31,7 @@ function Nav() {
             <Link to={"/cart"}>
               <FiShoppingCart title="장바구니" />
             </Link>
+            {products.length > 0 && <b>{products.length}</b>}
           </div>
         </li>
         <li>
@@ -25,7 +43,11 @@ function Nav() {
         </li>
         <li>
           {isAuth ? (
-            <GoSignOut className={styles.nav_sign_out} title="로그아웃" />
+            <GoSignOut
+              onClick={logoutHandler}
+              className={styles.nav_sign_out}
+              title="로그아웃"
+            />
           ) : (
             <Link to="/login">
               <GoSignIn title="로그인" />

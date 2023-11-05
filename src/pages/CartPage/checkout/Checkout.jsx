@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { getTotalPrice } from "../../../store/cart/cart.slice";
+import { getTotalPrice, postOrder } from "../../../store/cart/cart.slice";
 import useAuth from "../../../hooks/useAuth";
 import styles from "./Checkout.module.scss";
-
 const Checkout = () => {
   const cart = useAppSelector((state) => state.cartSlice);
 
@@ -12,9 +11,13 @@ const Checkout = () => {
     dispatch(getTotalPrice());
   }, []);
 
-  const isAuth = useAuth();
+  const { isAuth } = useAuth();
 
   const dispatch = useAppDispatch();
+
+  const sendOrderHandler = () => {
+    dispatch(postOrder(cart));
+  };
 
   return (
     <div className={styles.checkout}>
@@ -25,7 +28,9 @@ const Checkout = () => {
         </p>
 
         {isAuth ? (
-          <button className={styles.checkout_button}>주문하기</button>
+          <button onClick={sendOrderHandler} className={styles.checkout_button}>
+            주문하기
+          </button>
         ) : (
           <Link className={styles.checkout_button} to="/login">
             로그인

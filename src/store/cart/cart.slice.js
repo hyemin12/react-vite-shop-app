@@ -1,9 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   deleteDataToSessionStorage,
   getDataToSessionStorage,
   saveDataToSessionStorage,
 } from "../../utils/sessionStorageHandler";
+import axios from "axios";
+
+export const postOrder = createAsyncThunk(
+  "cart/postOder",
+  async (order, thunkAPI) => {
+    try {
+      await axios.post(
+        "https://654707d9902874dff3abe845.mockapi.io/orders",
+        order
+      );
+      thunkAPI.dispatch(sendOrder());
+    } catch (error) {
+      return thunkAPI.rejectWithValue("Error sending order");
+    }
+  }
+);
 
 const storageCartData = getDataToSessionStorage("cart");
 const storageUserData = getDataToSessionStorage("userId");
@@ -67,6 +83,10 @@ export const cartSlice = createSlice({
         0
       );
     },
+    sendOrder: (state) => {
+      state.products = [];
+      saveDataToSessionStorage("cart", state.products);
+    },
   },
 });
 export const {
@@ -77,5 +97,6 @@ export const {
   getTotalPrice,
   setUserId,
   removeUserId,
+  sendOrder,
 } = cartSlice.actions;
 export default cartSlice.reducer;
