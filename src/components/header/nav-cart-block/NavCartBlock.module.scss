@@ -1,32 +1,16 @@
 .nav_cart_price {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-
+  span {
+    font-size: 16px;
+    color: var(--main-color);
+  }
   p {
     margin: 20px 10px;
     font-weight: 20px;
     font-weight: bold;
-  }
-}
-
-.nav_cart_link {
-  a {
-    display: block;
-    width: 100%;
-    padding: 22px 26px;
-    color: var(--hover-color);
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.3s all ease;
-
-    &:hover {
-      color: #ffff !important;
-      background: var(--hover-color);
-    }
   }
 }

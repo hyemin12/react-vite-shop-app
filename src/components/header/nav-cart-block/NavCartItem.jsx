@@ -16,19 +16,21 @@ const NavCartItem = (item) => {
   return (
     <div className={styles.nav_cart_item}>
       <Link to={`/product/${id}`}>
-        {" "}
-        <img src={image} alt="product card" />
+        <div className={styles.nav_cart_item_image}>
+          <img src={image} alt="product card" />
+        </div>
       </Link>
       <div className={styles.nav_cart_description}>
-        <h3>{category}</h3>
-        <h2>{title}</h2>
-        <span>
-          {price} x {quantity} = $ {total.toFixed(2)}
-        </span>
+        <p>{category}</p>
+        <h4>{title}</h4>
+        <p className={styles.nav_cart_quantity}>수량: {quantity}개</p>
       </div>
-      <button onClick={deleteItemCart} className={styles.nav_cart_delete}>
-        <AiOutlineDelete />
-      </button>
+      <h4 className={styles.nav_cart_price}>${total.toFixed(2)}</h4>
+      <div>
+        <button onClick={deleteItemCart} className={styles.nav_cart_delete}>
+          <AiOutlineDelete />
+        </button>
+      </div>
     </div>
   );
 };

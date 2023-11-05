@@ -32,6 +32,7 @@ function Nav() {
             <Link to={"/cart"}>
               <FiShoppingCart title="장바구니" />
             </Link>
+            {products.length > 0 && <b>{products.length}</b>}
             {products.length > 0 && (
               <div className={styles.nav_hover_cart}>
                 <NavCartBlock />
