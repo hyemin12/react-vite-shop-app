@@ -6,11 +6,9 @@ import {
   deleteFromCart,
   incrementProduct,
 } from "../../../store/cart/cart.slice";
-import { AiOutlineDelete } from "react-icons/ai";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ id, image, title, price, category, quantity, total }) => {
-  console.log(id);
   const dispatch = useAppDispatch();
   const deleteItemFromCartHandler = () => {
     dispatch(deleteFromCart(id));
