@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Product } from "@store/products/products.type";
 import styles from "./OrderItem.module.scss";
-
-import { Product } from "../../../store/products/products.type";
 
 const OrderItem: React.FC<Product> = (order) => {
   const { id, image, category, title, price, quantity, total } = order;

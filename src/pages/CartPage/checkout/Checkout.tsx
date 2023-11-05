@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { getTotalPrice, postOrder } from "../../../store/cart/cart.slice";
-import useAuth from "../../../hooks/useAuth";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { getTotalPrice, postOrder } from "@store/cart/cart.slice";
+import useAuth from "@hooks/useAuth";
 import styles from "./Checkout.module.scss";
 
 const Checkout = () => {

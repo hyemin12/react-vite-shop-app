@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../../hooks/redux";
-import AddToCartButton from "../../../components/button/AddToCartButton";
-import { Product } from "../../../store/products/products.type";
+import { Product } from "@store/products/products.type";
+import { useAppSelector } from "@hooks/redux";
+import AddToCartButton from "@components/button/AddToCartButton";
 import styles from "./CardItem.module.scss";
 
 const CardItem: React.FC<Product> = (product) => {

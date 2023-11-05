@@ -1,7 +1,7 @@
 import React from "react";
-import { useAppDispatch } from "../../hooks/redux";
-import { addToCart } from "../../store/cart/cart.slice";
-import { Product } from "../../store/products/products.type";
+import { useAppDispatch } from "@hooks/redux";
+import { addToCart } from "@store/cart/cart.slice";
+import { Product } from "@store/products/products.type";
 
 type AddToCartButtonProps = {
   includedCart: boolean;

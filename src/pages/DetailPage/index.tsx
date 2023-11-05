@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useParams } from "react-router-dom";
-import { fetchProduct } from "../../store/products/product.slice";
-import Loader from "../../components/loader/Loader";
-import AddToCartButton from "../../components/button/AddToCartButton";
-import MoveToCartButton from "../../components/button/MoveToCartButton";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { fetchProduct } from "@store/products/product.slice";
+import Loader from "@components/loader/Loader";
+import AddToCartButton from "@components/button/AddToCartButton";
+import MoveToCartButton from "@components/button/MoveToCartButton";
 import styles from "./DetailPage.module.scss";
 
 const DetailPage = () => {

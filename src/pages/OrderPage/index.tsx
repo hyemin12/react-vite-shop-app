@@ -1,10 +1,11 @@
-import { Navigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import OrderList from "./order-list/OrderList";
-import { fetchOrder } from "../../store/order/order.slice";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import CartEmpty from "../../components/cart-empty/CartEmpty";
+import { Navigate } from "react-router-dom";
+import useAuth from "@hooks/useAuth";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { fetchOrder } from "@store/order/order.slice";
+import CartEmpty from "@components/cart-empty/CartEmpty";
+import Loader from "@components/loader/Loader";
+import OrderList from "./order-list/OrderList";
 
 const OrderPage = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const OrderPage = () => {
   console.log(order);
 
   if (!isAuth) return <Navigate to="/" />;
+  if (isLoading) return <Loader />;
   return (
     <div className="page">
       {!order.length ? (

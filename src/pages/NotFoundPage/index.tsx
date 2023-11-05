@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./NotFoundPage.module.scss";
 import { Link } from "react-router-dom";
+import styles from "./NotFoundPage.module.scss";
 
 const NotFoundPage = () => {
   return (

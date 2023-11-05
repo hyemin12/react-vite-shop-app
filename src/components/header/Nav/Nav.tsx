@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { getAuth, signOut } from "firebase/auth";
-import app from "../../../firebase";
-import useAuth from "../../../hooks/useAuth";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import styles from "./Nav.module.scss";
-import { removeUser } from "../../../store/user/user.slice";
-import { removeUserId } from "../../../store/cart/cart.slice";
+import app from "@/firebase";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { removeUser } from "@store/user/user.slice";
+import { removeUserId } from "@store/cart/cart.slice";
+import useAuth from "@hooks/useAuth";
 import NavCartBlock from "../nav-cart-block/NavCartBlock";
+import styles from "./Nav.module.scss";
 
 function Nav() {
   const dispatch = useAppDispatch();

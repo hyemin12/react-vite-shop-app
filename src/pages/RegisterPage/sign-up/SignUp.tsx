@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import Form from "../../../components/form/Form";
-import app from "../../../firebase";
-import { firebaseErrorHandler } from "../../../utils/firebaseErrorHandler";
-import { useAppDispatch } from "../../../hooks/redux";
-import { setUserId } from "../../../store/cart/cart.slice";
-import { setUser } from "../../../store/user/user.slice";
+
+import app from "@/firebase";
+import Form from "@components/form/Form";
+import { firebaseErrorHandler } from "@utils/firebaseErrorHandler";
+import { useAppDispatch } from "@hooks/redux";
+import { setUserId } from "@store/cart/cart.slice";
+import { setUser } from "@store/user/user.slice";
 
 const SignUp = () => {
   const navigate = useNavigate();

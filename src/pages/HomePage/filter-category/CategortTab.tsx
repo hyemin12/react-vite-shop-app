@@ -1,6 +1,6 @@
-import { setActiveCategory } from "../../../store/categories/categories.slice";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { CategoriesName } from "../../../store/categories/categories.type";
+import { setActiveCategory } from "@store/categories/categories.slice";
+import { CategoriesName } from "@store/categories/categories.type";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import styles from "./CategoryTab.module.scss";
 
 type CategoryTabProps = {

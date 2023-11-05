@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { fetchProducts } from "../../../store/products/products.slice";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { fetchProducts } from "@store/products/products.slice";
+import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import CardItem from "../card-item/CardItem";
-import styles from "./CardList.module.scss";
 import CardSkeleton from "../card-skeleton/CardSkeleton";
+import styles from "./CardList.module.scss";
 
 const CardList = () => {
   const dispatch = useAppDispatch();

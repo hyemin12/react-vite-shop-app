@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "../../../hooks/redux";
+import { useAppSelector } from "@hooks/redux";
 import NavCartItem from "./NavCartItem";
 import styles from "./NavCartList.module.scss";
 

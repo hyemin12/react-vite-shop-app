@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useAppDispatch } from "../../../hooks/redux";
-import { deleteFromCart } from "../../../store/cart/cart.slice";
-import { price2decimal } from "../../../utils/price2decimal";
-import { Product } from "../../../store/products/products.type";
+import { deleteFromCart } from "@store/cart/cart.slice";
+import { Product } from "@store/products/products.type";
+import { useAppDispatch } from "@hooks/redux";
+import { price2decimal } from "@utils/price2decimal";
 import styles from "./NavCartItem.module.scss";
 
 const NavCartItem: React.FC<Product> = (item) => {
