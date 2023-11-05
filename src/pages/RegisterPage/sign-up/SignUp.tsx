@@ -10,12 +10,12 @@ import { setUser } from "../../../store/user/user.slice";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [firebaseError, setFirebaseError] = useState(null);
+  const [firebaseError, setFirebaseError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
 
   const auth = getAuth(app);
 
-  const signUpAndLoginHandler = (email, password) => {
+  const signUpAndLoginHandler = (email: string, password: string) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         dispatch(
@@ -29,7 +29,6 @@ const SignUp = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.error(error);
         firebaseErrorHandler(error);
         return (
           error && setFirebaseError("이메일 또는 비밀번호가 잘못되었습니다.")

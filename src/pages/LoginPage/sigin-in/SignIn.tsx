@@ -10,11 +10,11 @@ import { setUserId } from "../../../store/cart/cart.slice";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [firebaseError, setFirebaseError] = useState(null);
+  const [firebaseError, setFirebaseError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
 
   const auth = getAuth(app);
-  const logInHandler = (email, password) => {
+  const logInHandler = (email: string, password: string) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         dispatch(
