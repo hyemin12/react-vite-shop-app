@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import cartSlice, { getTotalPrice } from "../../../store/cart/cart.slice";
 import NavCartList from "./NavCartList";
 import styles from "./NavCartBlock.module.scss";
+import { price2decimal } from "../../../utils/price2decimal";
 
 const NavCartBlock = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ const NavCartBlock = () => {
       <NavCartList />
       <div className={styles.nav_cart_price}>
         <span>총 {products.length}개 |</span>{" "}
-        <p>합계: $ {totalPrice.toFixed(2)}</p>
+        <p>합계: $ {price2decimal(totalPrice)}</p>
       </div>
     </div>
   );

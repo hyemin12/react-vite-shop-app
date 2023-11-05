@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../hooks/redux";
+import { price2decimal } from "../../../utils/price2decimal";
 import OrderItem from "./OrderItem";
 import styles from "./OrderList.module.scss";
 
@@ -10,7 +11,7 @@ const OrderList = () => {
         <div key={item.id}>
           <div className={styles.order_header}>
             <h3>주문 번호_{item.id}</h3>
-            <p>합계: $ {item.totalPrice.toFixed(2)}</p>
+            <p>합계: $ {price2decimal(item.totalPrice)}</p>
           </div>
 
           <ul className={styles.orders_list}>

@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../../hooks/redux";
 import { deleteFromCart } from "../../../store/cart/cart.slice";
 import { AiOutlineDelete } from "react-icons/ai";
 import styles from "./NavCartItem.module.scss";
+import { price2decimal } from "../../../utils/price2decimal";
 
 const NavCartItem = (item) => {
   const { id, category, image, title, price, quantity, total } = item;
@@ -25,7 +26,7 @@ const NavCartItem = (item) => {
         <h4>{title}</h4>
         <p className={styles.nav_cart_quantity}>수량: {quantity}개</p>
       </div>
-      <h4 className={styles.nav_cart_price}>${total.toFixed(2)}</h4>
+      <h4 className={styles.nav_cart_price}>${price2decimal(total)}</h4>
       <div>
         <button onClick={deleteItemCart} className={styles.nav_cart_delete}>
           <AiOutlineDelete />

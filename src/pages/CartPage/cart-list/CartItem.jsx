@@ -7,6 +7,7 @@ import {
   incrementProduct,
 } from "../../../store/cart/cart.slice";
 import styles from "./CartItem.module.scss";
+import { price2decimal } from "../../../utils/price2decimal";
 
 const CartItem = ({
   id,
@@ -60,7 +61,7 @@ const CartItem = ({
           </div>
         </div>
       </td>
-      <td>${total.toFixed(2)}</td>
+      <td>${price2decimal(total)}</td>
       <td>
         <button onClick={deleteItemFromCartHandler}>삭제하기</button>
       </td>
