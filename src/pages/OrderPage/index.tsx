@@ -11,8 +11,8 @@ const OrderPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading, order } = useAppSelector((state) => state.orderSlice);
+
   const { isAuth, id } = useAuth();
-  console.log(useAuth());
 
   useEffect(() => {
     dispatch(fetchOrder(id));

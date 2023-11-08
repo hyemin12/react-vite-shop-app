@@ -1,31 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Product } from "@store/products/products.type";
-import styles from "./OrderItem.module.scss";
 
-const OrderItem: React.FC<Product> = (order) => {
+type OrderItemProps = {
+  order: Product;
+  idx: number;
+};
+
+const OrderItem: React.FC<OrderItemProps> = ({ order, idx }) => {
   const { id, image, category, title, price, quantity, total } = order;
 
   return (
-    <li className={styles.order_item}>
-      <Link to={`/product/${id}`}>
-        <img src={image} alt="product card" />
-      </Link>
-      <div className={styles.order_description}>
-        <h4>{category}</h4>
-        <h3>{title}</h3>
-      </div>
-      <div className={styles.order_price}>
-        <h4>가격: </h4>
-        <span>
-          $ {price} x {quantity}{" "}
-        </span>
-      </div>
-      <div className={styles.order_total}>
-        <h4>합계 :</h4>
-        <span>$ {total}</span>
-      </div>
-    </li>
+    <tr>
+      <td className="td_index">
+        <p>{idx}</p>
+      </td>
+      <td>
+        <Link to={`/product/${id}`}>
+          <div className="td_image_wrapper">
+            <img src={image} alt="product card" />
+          </div>
+
+          <div>
+            <p className="td_category">{category}</p>
+            <h3 className="td_item_title">{title}</h3>
+          </div>
+        </Link>
+      </td>
+      <td>
+        <p>{quantity}</p>
+      </td>
+      <td>
+        <p>${total}</p>
+      </td>
+    </tr>
   );
 };
 

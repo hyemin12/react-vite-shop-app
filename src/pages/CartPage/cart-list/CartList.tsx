@@ -9,7 +9,7 @@ const CartList = () => {
     <table className={styles.cart_list}>
       <thead>
         <tr className={styles.cart_thead_tr}>
-          <th>번호</th>
+          <th></th>
           <th>상품명</th>
           <th>판매가</th>
           <th>수량</th>

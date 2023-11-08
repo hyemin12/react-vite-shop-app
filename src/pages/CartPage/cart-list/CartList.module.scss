@@ -1,16 +1,7 @@
 table.cart_list {
-  width: 100%;
-  border-top: 1px solid var(--medium-color);
-  border-bottom: 1px solid var(--medium-color);
-  border-collapse: collapse;
-
   margin-bottom: 40px;
 
   .cart_thead_tr {
-    th {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--medium-color);
-    }
     th:nth-child(1) {
       width: 5%;
     }

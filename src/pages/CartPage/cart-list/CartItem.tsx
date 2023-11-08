@@ -28,18 +28,18 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
     dispatch(decrementProduct(id));
   };
   return (
-    <tr className={styles.cart_item}>
+    <tr>
       <td>
         <p>{index}</p>
       </td>
       <td>
         <Link to={`/card/${id}`} className={styles.cart_description}>
-          <div className={styles.cart_image_wrapper}>
+          <div className="td_image_wrapper">
             <img src={image} alt={title} />
           </div>
           <div>
-            <h3>{category}</h3>
-            <h2>{title}</h2>
+            <p className="td_category">{category}</p>
+            <h3 className="td_item_title">{title}</h3>
           </div>
         </Link>
       </td>

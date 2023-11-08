@@ -5,23 +5,37 @@ import styles from "./OrderList.module.scss";
 
 const OrderList = () => {
   const { order } = useAppSelector((state) => state.orderSlice);
-  return (
-    <div className={styles.orders}>
-      {order.map((item) => (
-        <div key={item.id}>
-          <div className={styles.order_header}>
-            <h3>주문 번호_{item.id}</h3>
-            <p>합계: $ {price2decimal(item.totalPrice)}</p>
-          </div>
 
-          <ul className={styles.orders_list}>
-            {item.products.map((order) => (
-              <OrderItem key={order.id} {...order} />
-            ))}
-          </ul>
-        </div>
+  // createdAt, "2023-11-04T21:03:48.199Z"
+
+  return (
+    <ul className={styles.orders}>
+      {order.map(({ id, totalPrice, products }) => (
+        <li key={id}>
+          <div className={styles.order_header}>
+            <h3>주문 번호_{id}</h3>
+            <p>합계: $ {price2decimal(totalPrice)}</p>
+          </div>
+          <div className={styles.orders_list}>
+            <table className={styles.cart_list}>
+              <thead>
+                <tr className={styles.cart_thead_tr}>
+                  <th>번호</th>
+                  <th>상품명</th>
+                  <th>수량</th>
+                  <th>주문 금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((order, idx) => (
+                  <OrderItem key={order.id} idx={idx + 1} order={order} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
