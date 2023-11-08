@@ -70,7 +70,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
         <p>${price2decimal(total)}</p>
       </td>
       <td>
-        <button className="primary-btn" onClick={deleteItemFromCartHandler}>
+        <button className="primary-button" onClick={deleteItemFromCartHandler}>
           삭제
         </button>
       </td>

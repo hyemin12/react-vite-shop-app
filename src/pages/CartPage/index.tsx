@@ -8,7 +8,10 @@ const CartPage = () => {
   return (
     <div className="page">
       {!products.length ? (
-        <CartEmpty title="장바구니가" />
+        <CartEmpty
+          title="장바구니에 담긴 상품"
+          text="원하는 상품을 장바구니에 담아보세요!"
+        />
       ) : (
         <div className="container">
           <h1>장바구니</h1>

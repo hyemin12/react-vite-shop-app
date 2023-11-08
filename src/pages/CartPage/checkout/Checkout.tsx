@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { getTotalPrice, postOrder } from "@store/cart/cart.slice";
 import useAuth from "@hooks/useAuth";
 import styles from "./Checkout.module.scss";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const cart = useAppSelector((state) => state.cartSlice);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const Checkout = () => {
 
   const sendOrderHandler = () => {
     dispatch(postOrder(cart));
+    navigate("/order");
   };
 
   return (

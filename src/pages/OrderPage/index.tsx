@@ -23,13 +23,17 @@ const OrderPage = () => {
       navigate("/login");
     }
   }, [isAuth]);
+  console.log(isAuth, id);
 
   if (!isAuth) return null;
   if (isLoading) return <Loader />;
   return (
     <div className="page">
       {!order.length ? (
-        <CartEmpty title="주문 내역이" />
+        <CartEmpty
+          title="구매 내역"
+          text="원하는 상품을 장바구니에 추가하고 주문해보세요!"
+        />
       ) : (
         <div className="container">
           <h1>주문 내역</h1>

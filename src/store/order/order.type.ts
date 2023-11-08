@@ -5,4 +5,5 @@ export type Order = {
   userId: string;
   totalPrice: number;
   products: Product[];
+  createdAt?: string;
 };

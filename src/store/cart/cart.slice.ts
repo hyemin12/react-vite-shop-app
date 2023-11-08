@@ -6,6 +6,7 @@ import {
 } from "../../utils/sessionStorageHandler";
 import axios from "axios";
 import { Product } from "../products/products.type";
+import { toggleSuccessOrderModal } from "@store/modal/modal.slice";
 
 export const postOrder = createAsyncThunk(
   "cart/postOder",
@@ -16,6 +17,7 @@ export const postOrder = createAsyncThunk(
         order
       );
       thunkAPI.dispatch(sendOrder());
+      thunkAPI.dispatch(toggleSuccessOrderModal(true));
     } catch (error) {
       return thunkAPI.rejectWithValue("Error sending order");
     }
