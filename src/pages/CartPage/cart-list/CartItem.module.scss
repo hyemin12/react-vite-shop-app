@@ -1,15 +1,17 @@
 .cart_item {
-  padding: 10px 8px;
+  td {
+    padding: 10px 8px;
+  }
 }
 .cart_description {
   display: flex;
   flex-direction: row;
-
   align-items: center;
   width: 100%;
   margin-left: 20px;
   text-align: start;
   gap: 25px;
+
   a {
     display: flex;
     align-items: center;
