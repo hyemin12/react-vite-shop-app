@@ -32,24 +32,27 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
       <td>{index}</td>
       <td className={styles.cart_description}>
         <Link to={`/card/:id`}>
-          <img src={image} alt={title} />
+          <div className={styles.cart_image_wrapper}>
+            <img src={image} alt={title} />
+          </div>
+          <div>
+            <h3>{category}</h3>
+            <h2>{title}</h2>
+          </div>
         </Link>
-        <div>
-          <h3>{category}</h3>
-          <h2>{title}</h2>
-        </div>
       </td>
       <td>${price}</td>
       <td>
         <div className={styles.cart_count}>
-          <div>
+          <p>{quantity}</p>
+
+          <div className={styles.cart_count_buttons}>
             <button
               disabled={quantity === 1}
               onClick={decrementItemCountHandler}
             >
               -
             </button>
-            <span>{quantity}</span>
             <button
               disabled={quantity === 10}
               onClick={incrementItemCountHandler}
@@ -61,7 +64,9 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
       </td>
       <td>${price2decimal(total)}</td>
       <td>
-        <button onClick={deleteItemFromCartHandler}>삭제하기</button>
+        <button className="primary-btn" onClick={deleteItemFromCartHandler}>
+          삭제
+        </button>
       </td>
     </tr>
   );

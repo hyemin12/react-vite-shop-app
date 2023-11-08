@@ -14,7 +14,7 @@ const CartList = () => {
           <th>판매가</th>
           <th>수량</th>
           <th>주문 금액</th>
-          <th>주문관리</th>
+          <th>관리</th>
         </tr>
       </thead>
       <tbody>

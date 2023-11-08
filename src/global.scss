@@ -114,13 +114,14 @@ button,
 
   &:hover {
     color: #fff;
-    background-color: var(--primary-color);
+    background-color: var(--second-color);
     border-color: transparent;
   }
 
   &:disabled {
     color: #fff;
     background: var(--second-color);
+    cursor: default;
   }
 }
 
@@ -131,5 +132,8 @@ button.primary-btn {
   &:hover {
     background: var(--second-color);
     border-color: var(--second-color);
+  }
+  @media (max-width: 768px) {
+    padding: 10px;
   }
 }

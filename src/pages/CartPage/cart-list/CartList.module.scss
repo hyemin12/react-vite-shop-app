@@ -30,6 +30,28 @@ table.cart_list {
       width: 10%;
     }
   }
+  @media (max-width: 992px) {
+    th:nth-child(1),
+    th:nth-child(3),
+    td:nth-child(1),
+    td:nth-child(3) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 610px) {
+    h3 {
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    span {
+      font-size: 20px;
+    }
+  }
 
   .cart_tfoot {
     tr {
