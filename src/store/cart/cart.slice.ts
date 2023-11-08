@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { Product } from "../products/products.type";
 import { toggleSuccessOrderModal } from "@store/modal/modal.slice";
+import { toast } from "react-toastify";
 
 export const postOrder = createAsyncThunk(
   "cart/postOder",
@@ -56,12 +57,14 @@ export const cartSlice = createSlice({
         quantity: 1,
         total: action.payload.price,
       });
+      toast.error("장바구니에 추가되었습니다.");
       saveDataToSessionStorage("cart", state.products);
     },
     deleteFromCart: (state, action: PayloadAction<number>) => {
       state.products = state.products.filter(
         (item) => item.id !== action.payload
       );
+      toast.warning("장바구니에서 삭제되었습니다.");
       saveDataToSessionStorage("cart", state.products);
     },
     incrementProduct: (state, action: PayloadAction<number>) => {

@@ -13,9 +13,8 @@ const modalSlice = createSlice({
   name: "modal",
   initialState,
   reducers: {
-    toggleSuccessOrderModal: (state, { payload }) => {
-      state.viewSuccessOrder = payload;
-    },
+    toggleSuccessOrderModal: (state, { payload }) =>
+      (state.viewSuccessOrder = payload),
   },
 });
 
