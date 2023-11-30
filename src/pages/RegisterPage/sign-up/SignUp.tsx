@@ -29,15 +29,9 @@ const SignUp = () => {
         dispatch(setUserId(userCredential.user.uid));
         navigate("/");
       })
-      .catch((error) => error && setFirebaseError(firebaseErrorHandler(error)));
+      .catch((error) => error && setFirebaseError(firebaseErrorHandler(error.code)));
   };
-  return (
-    <Form
-      title="가입하기"
-      getDataForm={signUpAndLoginHandler}
-      firebaseError={firebaseError}
-    />
-  );
+  return <Form title='가입하기' getDataForm={signUpAndLoginHandler} firebaseError={firebaseError} />;
 };
 
 export default SignUp;

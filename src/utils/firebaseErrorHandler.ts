@@ -2,7 +2,11 @@ import React from "react";
 
 export const firebaseErrorHandler = (error: any) => {
   console.log(error);
-  switch (error.code) {
+  switch (error) {
+    case "auth/too-many-requests":
+      return "너무 많은 시도를 했습니다. 잠시후에 다시 로그인을 시도하세요.";
+    case "auth/invalid-login-credentials":
+      return "아이디와 비밀번호가 올바르지 않습니다.";
     case "auth/user-not-found":
       return "이메일이 일치하지 않습니다.";
     case "auth/email-already-in-use":
