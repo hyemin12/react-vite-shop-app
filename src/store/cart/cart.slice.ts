@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 export const postOrder = createAsyncThunk("cart/postOder", async (order: CartState, thunkAPI) => {
   try {
     await axios.post("https://654707d9902874dff3abe845.mockapi.io/orders", order);
-    thunkAPI.dispatch(sendOrder());
+    await thunkAPI.dispatch(sendOrder());
     thunkAPI.dispatch(toggleSuccessOrderModal(true));
   } catch (error) {
     return thunkAPI.rejectWithValue("Error sending order");
