@@ -9,17 +9,18 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Layout = () => {
   const { viewSuccessOrder } = useAppSelector((state) => state.modalSlice);
+
   return (
     <div className={styles.layout}>
+      {viewSuccessOrder && <SuccessOrderModal />}
       <ToastContainer
-        position="top-right"
+        position='bottom-left'
         autoClose={2000}
         hideProgressBar={false}
         closeOnClick
         pauseOnHover
-        theme="colored"
+        theme='colored'
       />
-      {viewSuccessOrder && <SuccessOrderModal />}
       <Header />
       <Outlet />
       <Footer />
