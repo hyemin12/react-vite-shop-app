@@ -9,21 +9,15 @@ import { Product } from "../products/products.type";
 import { toggleSuccessOrderModal } from "@store/modal/modal.slice";
 import { toast } from "react-toastify";
 
-export const postOrder = createAsyncThunk(
-  "cart/postOder",
-  async (order: CartState, thunkAPI) => {
-    try {
-      await axios.post(
-        "https://654707d9902874dff3abe845.mockapi.io/orders",
-        order
-      );
-      thunkAPI.dispatch(sendOrder());
-      thunkAPI.dispatch(toggleSuccessOrderModal(true));
-    } catch (error) {
-      return thunkAPI.rejectWithValue("Error sending order");
-    }
+export const postOrder = createAsyncThunk("cart/postOder", async (order: CartState, thunkAPI) => {
+  try {
+    await axios.post("https://654707d9902874dff3abe845.mockapi.io/orders", order);
+    thunkAPI.dispatch(sendOrder());
+    thunkAPI.dispatch(toggleSuccessOrderModal(true));
+  } catch (error) {
+    return thunkAPI.rejectWithValue("Error sending order");
   }
-);
+});
 
 const storageCartData = getDataToSessionStorage("cart");
 const storageUserData = getDataToSessionStorage("userId");
@@ -57,13 +51,11 @@ export const cartSlice = createSlice({
         quantity: 1,
         total: action.payload.price,
       });
-      toast.error("장바구니에 추가되었습니다.");
+      toast.success("장바구니에 추가되었습니다.");
       saveDataToSessionStorage("cart", state.products);
     },
     deleteFromCart: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter(
-        (item) => item.id !== action.payload
-      );
+      state.products = state.products.filter((item) => item.id !== action.payload);
       toast.warning("장바구니에서 삭제되었습니다.");
       saveDataToSessionStorage("cart", state.products);
     },
@@ -92,10 +84,7 @@ export const cartSlice = createSlice({
       saveDataToSessionStorage("cart", state.products);
     },
     getTotalPrice: (state) => {
-      state.totalPrice = state.products.reduce(
-        (acc, cur) => (acc += cur.total),
-        0
-      );
+      state.totalPrice = state.products.reduce((acc, cur) => (acc += cur.total), 0);
     },
     sendOrder: (state) => {
       state.products = [];

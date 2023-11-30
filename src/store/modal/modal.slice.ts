@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Order } from "@store/order/order.type";
 
 type Modal = {
   viewSuccessOrder: boolean;
@@ -13,8 +12,9 @@ const modalSlice = createSlice({
   name: "modal",
   initialState,
   reducers: {
-    toggleSuccessOrderModal: (state, { payload }) =>
-      (state.viewSuccessOrder = payload),
+    toggleSuccessOrderModal: (state, { payload }) => {
+      state.viewSuccessOrder = payload;
+    },
   },
 });
 

@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector } from "@hooks/redux";
 import CartItem from "./CartItem";
 import styles from "./CartList.module.scss";
+import { price2decimal } from "@utils/price2decimal";
 
 const CartList = () => {
   const { products, totalPrice } = useAppSelector((state) => state.cartSlice);
@@ -26,7 +27,7 @@ const CartList = () => {
         <tr>
           <td colSpan={6}>
             <h2>
-              <span> 최종 결제 금액 = </span> ${totalPrice}
+              <span> 최종 결제 금액 = </span> ${price2decimal(totalPrice)}
             </h2>
           </td>
         </tr>
