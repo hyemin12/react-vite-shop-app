@@ -14,8 +14,6 @@ export const firebaseErrorHandler = (error: any) => {
     case "auth/wrong-password":
       return "비밀번호가 일치하지 않습니다.";
     case "auth/weak-password":
-      return "비밀번호는 6글자 이상이어야 합니다.";
-    case "auth/weak-password":
       return "약한 암호입니다. 더 강력한 암호를 사용하세요.";
     case "auth/network-request-failed":
       return "네트워크 연결에 실패 하였습니다.";
