@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import HomePage from "./pages/HomePage";
-import DetailPage from "./pages/DetailPage";
-import CartPage from "./pages/CartPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import OrderPage from "./pages/OrderPage";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+import DetailPage from "./pages/DetailPage/DetailPage";
+import CartPage from "./pages/CartPage/CartPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import OrderPage from "./pages/OrderPage/OrderPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
   return (
