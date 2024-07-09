@@ -6,7 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const CardSkeleton = () => {
   return (
     <div className={styles.card_skeleton_container}>
-      {Array(4)
+      {Array(16)
         .fill(0)
         .map((_, idx) => (
           <div className={styles.card_skeleton} key={idx}>

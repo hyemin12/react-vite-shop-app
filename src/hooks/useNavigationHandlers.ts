@@ -15,10 +15,15 @@ const useNavigationHandlers = () => {
     navigate("/login");
   };
 
+  const moveToCartPageHandler = () => {
+    navigate("/cart");
+  };
+
   return {
     moveToMainPageHandler,
     moveToOrderPageHandler,
     moveToLoginPageHandler,
+    moveToCartPageHandler,
   };
 };
 export default useNavigationHandlers;
