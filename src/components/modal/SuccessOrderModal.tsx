@@ -24,7 +24,7 @@ const SuccessOrderModal = () => {
       <div>
         <h2>고객님의 주문이 완료 되었습니다.</h2>
         <p>
-          주문번호 <span>{newOrder.id + 1}</span>
+          주문번호 <span>{Number(newOrder.id) + 1}</span>
         </p>
         <p>
           주문일자 <span>{changeDateFormat(newOrder.createdAt as string)}</span>
