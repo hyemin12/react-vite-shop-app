@@ -1,7 +1,9 @@
 .cart_empty {
-  margin-top: 50px;
-  margin-bottom: 50px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px);
   img {
     width: 200px;
     margin-bottom: 20px;

@@ -12,7 +12,6 @@ const OrderPage = () => {
   const dispatch = useAppDispatch();
   const { moveToLoginPageHandler } = useNavigationHandlers();
   const { isLoading, order } = useAppSelector((state) => state.orderSlice);
-
   const { isAuth, id } = useAuth();
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const OrderPage = () => {
   if (!isAuth) return null;
   if (isLoading)
     return (
-      <div className='loading'>
+      <div className='loading-container'>
         <Loader />
       </div>
     );

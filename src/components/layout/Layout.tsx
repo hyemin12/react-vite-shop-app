@@ -22,7 +22,9 @@ const Layout = () => {
         theme='colored'
       />
       <Header />
-      <Outlet />
+      <div id='main'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
