@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { GoSignOut } from "react-icons/go";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
-import { app } from "src/firebase";
+import { auth } from "src/firebase";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import useAuth from "src/hooks/useAuth";
 import NavCartBlock from "../nav-cart-block/NavCartBlock";
@@ -16,7 +16,6 @@ function Nav() {
   const { isAuth } = useAuth();
   const { products } = useAppSelector((state) => state.cartSlice);
 
-  const auth = getAuth(app);
   const logoutHandler = async () => {
     try {
       await signOut(auth);
