@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -12,9 +12,11 @@ import { setUserId } from "src/store/cart/cart.slice";
 import { firebaseErrorHandler } from "src/utils/firebaseErrorHandler";
 
 const LoginPage = () => {
+  const { pathname } = useLocation();
   const [firebaseError, setFirebaseError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
-  const { moveToMainPageHandler } = useNavigationHandlers();
+  const { moveToMainPageHandler, moveToCartPageHandler } =
+    useNavigationHandlers();
 
   const logInHandler = async (email: string, password: string) => {
     try {
@@ -27,6 +29,11 @@ const LoginPage = () => {
         })
       );
       dispatch(setUserId(user.uid));
+
+      if (pathname === "cart") {
+        moveToCartPageHandler();
+        return;
+      }
       moveToMainPageHandler();
     } catch (error) {
       if (error instanceof FirebaseError) {
