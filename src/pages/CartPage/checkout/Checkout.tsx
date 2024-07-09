@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import { getTotalPrice, postOrder } from "src/store/cart/cart.slice";
 import useAuth from "src/hooks/useAuth";
-import useNavigationHandlers from "src/hooks/useNavigationHandlers";
 import styles from "./Checkout.module.scss";
 
 const Checkout = () => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cartSlice);
-  const { moveToOrderPageHandler } = useNavigationHandlers();
   const { isAuth } = useAuth();
 
   useEffect(() => {
@@ -19,7 +17,6 @@ const Checkout = () => {
 
   const sendOrderHandler = () => {
     dispatch(postOrder(cart));
-    moveToOrderPageHandler();
   };
 
   return (

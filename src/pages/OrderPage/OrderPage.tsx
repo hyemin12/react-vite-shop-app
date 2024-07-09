@@ -1,31 +1,37 @@
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+
 import useAuth from "src/hooks/useAuth";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
-import { fetchOrder } from "src/store/order/order.slice";
 import CartEmpty from "src/components/cart-empty/CartEmpty";
 import Loader from "src/components/loader/Loader";
 import OrderList from "./order-list/OrderList";
+import { fetchOrder } from "src/store/order/order.slice";
+import useNavigationHandlers from "src/hooks/useNavigationHandlers";
 
 const OrderPage = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const { moveToLoginPageHandler } = useNavigationHandlers();
   const { isLoading, order } = useAppSelector((state) => state.orderSlice);
 
   const { isAuth, id } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchOrder(id));
-  }, [id]);
-
-  useEffect(() => {
     if (!isAuth) {
-      navigate("/login");
+      moveToLoginPageHandler();
+      return;
     }
-  }, [isAuth]);
+
+    dispatch(fetchOrder(id));
+  }, [isAuth, id]);
 
   if (!isAuth) return null;
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <div className='loading'>
+        <Loader />
+      </div>
+    );
+
   return (
     <div className='page'>
       {!order.length ? (

@@ -1,13 +1,14 @@
+import axios from "axios";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import {
   deleteDataToSessionStorage,
   getDataToSessionStorage,
   saveDataToSessionStorage,
 } from "../../utils/sessionStorageHandler";
-import axios from "axios";
 import { Product } from "../products/products.type";
 import { toggleSuccessOrderModal } from "src/store/modal/modal.slice";
-import { toast } from "react-toastify";
 
 export const postOrder = createAsyncThunk(
   "cart/postOder",

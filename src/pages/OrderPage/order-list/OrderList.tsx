@@ -6,8 +6,6 @@ import styles from "./OrderList.module.scss";
 const OrderList = () => {
   const { order } = useAppSelector((state) => state.orderSlice);
 
-  // createdAt, "2023-11-04T21:03:48.199Z"
-
   return (
     <ul className={styles.orders}>
       {order.map(({ id, totalPrice, products }) => (
