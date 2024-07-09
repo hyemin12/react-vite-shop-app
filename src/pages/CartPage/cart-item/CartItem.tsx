@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "@hooks/redux";
+import { useAppDispatch } from "src/hooks/redux";
 import {
   decrementProduct,
   deleteFromCart,
   incrementProduct,
-} from "@store/cart/cart.slice";
-import { Product } from "@store/products/products.type";
-import { price2decimal } from "@utils/price2decimal";
+} from "src/store/cart/cart.slice";
+import { Product } from "src/store/products/products.type";
+import { price2decimal } from "src/utils/price2decimal";
 import styles from "./CartItem.module.scss";
 
 type CartItemProps = {
@@ -34,12 +34,12 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
       </td>
       <td>
         <Link to={`/card/${id}`} className={styles.cart_description}>
-          <div className="td_image_wrapper">
+          <div className='td_image_wrapper'>
             <img src={image} alt={title} />
           </div>
           <div>
-            <p className="td_category">{category}</p>
-            <h3 className="td_item_title">{title}</h3>
+            <p className='td_category'>{category}</p>
+            <h3 className='td_item_title'>{title}</h3>
           </div>
         </Link>
       </td>
@@ -70,7 +70,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
         <p>${price2decimal(total)}</p>
       </td>
       <td>
-        <button className="primary-button" onClick={deleteItemFromCartHandler}>
+        <button className='primary-button' onClick={deleteItemFromCartHandler}>
           삭제
         </button>
       </td>

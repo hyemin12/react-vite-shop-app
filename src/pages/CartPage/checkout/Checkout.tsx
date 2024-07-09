@@ -1,26 +1,25 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { getTotalPrice, postOrder } from "@store/cart/cart.slice";
-import useAuth from "@hooks/useAuth";
+import { Link } from "react-router-dom";
+
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { getTotalPrice, postOrder } from "src/store/cart/cart.slice";
+import useAuth from "src/hooks/useAuth";
+import useNavigationHandlers from "src/hooks/useNavigationHandlers";
 import styles from "./Checkout.module.scss";
-import { toast } from "react-toastify";
 
 const Checkout = () => {
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cartSlice);
+  const { moveToOrderPageHandler } = useNavigationHandlers();
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     dispatch(getTotalPrice());
   }, []);
 
-  const { isAuth } = useAuth();
-
-  const dispatch = useAppDispatch();
-
   const sendOrderHandler = () => {
     dispatch(postOrder(cart));
-    navigate("/order");
+    moveToOrderPageHandler();
   };
 
   return (
@@ -30,7 +29,7 @@ const Checkout = () => {
           주문하기
         </button>
       ) : (
-        <Link className={styles.checkout_button} to="/login">
+        <Link className={styles.checkout_button} to='/login'>
           로그인하고 주문하기
         </Link>
       )}

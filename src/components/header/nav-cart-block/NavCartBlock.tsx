@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { getTotalPrice } from "@store/cart/cart.slice";
-import { price2decimal } from "@utils/price2decimal";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { getTotalPrice } from "src/store/cart/cart.slice";
+import { price2decimal } from "src/utils/price2decimal";
 import NavCartList from "./NavCartList";
 import styles from "./NavCartBlock.module.scss";
 

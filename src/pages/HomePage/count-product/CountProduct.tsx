@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "@hooks/redux";
+import { useAppSelector } from "src/hooks/redux";
 import styles from "./CountProduct.module.scss";
 
 const CountProduct = () => {

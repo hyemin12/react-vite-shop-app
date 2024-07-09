@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
-import { GoSignIn, GoSignOut } from "react-icons/go";
+import { GoSignOut } from "react-icons/go";
 import { getAuth, signOut } from "firebase/auth";
-import app from "@/firebase";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { removeUser } from "@store/user/user.slice";
-import { removeUserId } from "@store/cart/cart.slice";
-import useAuth from "@hooks/useAuth";
+import app from "src/firebase";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { removeUser } from "src/store/user/user.slice";
+import { removeUserId } from "src/store/cart/cart.slice";
+import useAuth from "src/hooks/useAuth";
 import NavCartBlock from "../nav-cart-block/NavCartBlock";
 import styles from "./Nav.module.scss";
 
@@ -16,50 +16,48 @@ function Nav() {
   const { products } = useAppSelector((state) => state.cartSlice);
 
   const auth = getAuth(app);
-  const logoutHandler = () => {
-    signOut(auth)
-      .then(() => {
-        dispatch(removeUser());
-        dispatch(removeUserId());
-      })
-      .catch((error) => console.error(error));
+  const logoutHandler = async () => {
+    try {
+      await signOut(auth);
+      dispatch(removeUser());
+      dispatch(removeUserId());
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <nav className={styles.nav}>
       <ul className={styles.nav}>
-        <li>
-          <div className={styles.counter}>
-            <Link to={"/cart"}>
-              <FiShoppingCart title="장바구니" />
-            </Link>
-            {products.length > 0 && <b>{products.length}</b>}
-            {products.length > 0 && (
+        <li className={styles.counter}>
+          <Link to='/cart'>
+            <FiShoppingCart title='장바구니' />
+          </Link>
+
+          {products.length > 0 && (
+            <>
+              <b>{products.length}</b>
               <div className={styles.nav_hover_cart}>
                 <NavCartBlock />
               </div>
-            )}
-          </div>
+            </>
+          )}
         </li>
-        <li>
-          <div className={styles.counter}>
-            <Link to={"/order"}>
-              <FiUser title="주문" />
-            </Link>
-          </div>
+
+        <li className={styles.counter}>
+          <Link to='/order'>
+            <FiUser title='주문' />
+          </Link>
         </li>
-        <li>
-          {isAuth ? (
+
+        {isAuth && (
+          <li>
             <GoSignOut
               onClick={logoutHandler}
               className={styles.nav_sign_out}
-              title="로그아웃"
+              title='로그아웃'
             />
-          ) : (
-            <Link to="/login">
-              <GoSignIn title="로그인" />
-            </Link>
-          )}
-        </li>
+          </li>
+        )}
       </ul>
     </nav>
   );

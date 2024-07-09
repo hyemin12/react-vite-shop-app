@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { fetchProduct } from "@store/products/product.slice";
-import Loader from "@components/loader/Loader";
-import AddToCartButton from "@components/button/AddToCartButton";
-import MoveToCartButton from "@components/button/MoveToCartButton";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { fetchProduct } from "src/store/products/product.slice";
+import Loader from "src/components/loader/Loader";
+import AddToCartButton from "src/components/button/AddToCartButton";
+import MoveToCartButton from "src/components/button/MoveToCartButton";
 import styles from "./DetailPage.module.scss";
 
 const DetailPage = () => {
@@ -22,13 +22,13 @@ const DetailPage = () => {
   const includedCart = products.some((product) => product.id === productId);
 
   return (
-    <div className="page">
+    <div className='page'>
       {isLoading ? (
         <Loader />
       ) : (
         <div className={styles.card_wrapper}>
           <div className={styles.card_img}>
-            <img src={product.image} alt="product card" />
+            <img src={product.image} alt='product card' />
           </div>
           <div className={styles.card_description}>
             <h3>{product.category}</h3>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "@hooks/redux";
+import { useAppDispatch } from "src/hooks/redux";
 import { AiOutlineDelete } from "react-icons/ai";
-import { deleteFromCart } from "@store/cart/cart.slice";
-import { Product } from "@store/products/products.type";
-import { price2decimal } from "@utils/price2decimal";
+import { deleteFromCart } from "src/store/cart/cart.slice";
+import { Product } from "src/store/products/products.type";
+import { price2decimal } from "src/utils/price2decimal";
 import styles from "./NavCartItem.module.scss";
 import { IconContext } from "react-icons/lib";
 
@@ -20,7 +20,7 @@ const NavCartItem: React.FC<Product> = (item) => {
     <div className={styles.nav_cart_item}>
       <Link to={`/product/${id}`}>
         <div className={styles.nav_cart_item_image}>
-          <img src={image} alt="product card" />
+          <img src={image} alt='product card' />
         </div>
       </Link>
       <div className={styles.nav_cart_description}>
@@ -31,7 +31,7 @@ const NavCartItem: React.FC<Product> = (item) => {
       <h4 className={styles.nav_cart_price}>${price2decimal(total)}</h4>
       <div>
         <span
-          role="button"
+          role='button'
           onClick={deleteItemCart}
           className={styles.nav_cart_delete}
         >

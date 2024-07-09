@@ -1,5 +1,5 @@
-import { useAppSelector } from "@hooks/redux";
-import CartEmpty from "@components/cart-empty/CartEmpty";
+import { useAppSelector } from "src/hooks/redux";
+import CartEmpty from "src/components/cart-empty/CartEmpty";
 import CartList from "./cart-list/CartList";
 import Checkout from "./checkout/Checkout";
 

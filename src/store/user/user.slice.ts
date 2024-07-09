@@ -3,7 +3,7 @@ import {
   deleteDataToSessionStorage,
   getDataToSessionStorage,
   saveDataToSessionStorage,
-} from "@utils/sessionStorageHandler";
+} from "src/utils/sessionStorageHandler";
 
 const storageData = getDataToSessionStorage("user");
 

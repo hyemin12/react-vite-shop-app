@@ -1,5 +1,5 @@
 import React from "react";
-import { CategoriesName } from "@store/categories/categories.type";
+import { CategoriesName } from "src/store/categories/categories.type";
 import styles from "./FilterCategory.module.scss";
 import CategortTab from "./CategortTab";
 

@@ -1,5 +1,5 @@
-import { useAppSelector } from "@hooks/redux";
-import { price2decimal } from "@utils/price2decimal";
+import { useAppSelector } from "src/hooks/redux";
+import { price2decimal } from "src/utils/price2decimal";
 import OrderItem from "./OrderItem";
 import styles from "./OrderList.module.scss";
 

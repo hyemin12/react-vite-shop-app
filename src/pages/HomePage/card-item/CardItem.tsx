@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Product } from "@store/products/products.type";
-import { useAppSelector } from "@hooks/redux";
-import AddToCartButton from "@components/button/AddToCartButton";
+import { Product } from "src/store/products/products.type";
+import { useAppSelector } from "src/hooks/redux";
+import AddToCartButton from "src/components/button/AddToCartButton";
 import styles from "./CardItem.module.scss";
 
 const CardItem: React.FC<Product> = (product) => {
@@ -15,7 +15,7 @@ const CardItem: React.FC<Product> = (product) => {
   return (
     <li className={styles.card_item}>
       <Link to={`/product/${id}`}>
-        <img src={image} width={"80%"} height={"200px"} alt="product card" />
+        <img src={image} width={"80%"} height={"200px"} alt='product card' />
       </Link>
       <h5>{title.substring(0, 15)}...</h5>
 

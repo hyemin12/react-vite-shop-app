@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { toggleSuccessOrderModal } from "@store/modal/modal.slice";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux";
+import { toggleSuccessOrderModal } from "src/store/modal/modal.slice";
 import styles from "./Modal.module.scss";
 
 const SuccessOrderModal = () => {
@@ -32,7 +32,11 @@ const SuccessOrderModal = () => {
           <Link to='/' className='button' onClick={closeSuccessOrderModal}>
             계속 쇼핑하기
           </Link>
-          <Link to='/order' className='primary-button' onClick={closeSuccessOrderModal}>
+          <Link
+            to='/order'
+            className='primary-button'
+            onClick={closeSuccessOrderModal}
+          >
             주문내역 보기
           </Link>
         </div>
